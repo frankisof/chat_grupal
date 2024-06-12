@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Individual</title>
+    <link rel="stylesheet" href="style_chat.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Chat Individual</h1>
+        <a id="group-chat-button" href="#" class="individual-chat-button">Chat Grupal</a>
+        <div id="user-list" class="user-list"></div>
+        <div id="chat-window" class="chat-window">
+            <div id="messages" class="messages"></div>
+        </div>
+        <form id="message-form" class="message-form">
+            <input type="text" id="message-input" class="message-input" placeholder="Escribe tu mensaje aquí" required>
+            <button type="submit" class="send-button">Enviar</button>
+        </form>
+    </div>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const username = '<%= username %>'; // Asegúrate de que esta variable se establece correctamente desde el servidor
+
+            // Establece el nombre de usuario en una cookie con una duración de 1 día
+            document.cookie = `username=${username}; max-age=${60 * 60 * 24}`;
+
+            // Establece el enlace del botón de chat grupal
+            document.getElementById('group-chat-button').href = `/`;
+        });
+    </script>
+    <script defer src="individual_chat.js"></script>
+</body>
+</html>

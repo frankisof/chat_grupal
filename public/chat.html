@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Grupal</title>
+    <link rel="stylesheet" href="/style_chat.css">
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script> <!-- Cliente de socket.io desde CDN -->
+    <script defer src="/chat.js"></script> <!-- Enlace al archivo JS -->
+</head>
+<body>
+    <div class="chat-container">
+        <div class="header">
+            <a href="/" class="individual-chat-button">Chat Individual</a>
+            <h1>Alconcitos uv</h1>
+            <p id="username"></p> <!-- Aquí se mostrará el nombre de usuario -->
+        </div>
+        <div id="chat-window" class="chat-window">
+            <div id="messages" class="messages"></div>
+        </div>
+        <form id="message-form" class="message-form">
+            <input type="text" id="message-input" class="message-input" placeholder="Escribe tu mensaje aquí" required>
+            <button type="submit" class="send-button">Enviar</button>
+        </form>
+    </div>
+    <script>
+        // Obtener el nombre de usuario desde el servidor y almacenarlo en una variable JavaScript
+        const username = '<%= username %>';
+        // Almacenar el nombre de usuario en el almacenamiento local
+        localStorage.setItem('username', username);
+        // Mostrar el nombre de usuario en el elemento HTML correspondiente
+        document.getElementById('username').textContent = username;
+    </script>
+</body>
+</html>
